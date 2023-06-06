@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Заголовок страницы в браузере -->
+    <title>Интернет-магазин</title>
+    <!-- Адаптив -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <!-- Подключаем CSS -->
+    <link rel="stylesheet" href="./css/style.css" />
+    <!-- <link rel="stylesheet" href="./css/catalogStyle.css" /> -->
+
+    <!-- Шрифты -->
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Bebas+Neue:regulardisplay=swap" rel="stylesheet" />
+    <!-- Кодировка страницы -->
+    <meta charset="UTF-8">
+</head>
+
+<body>
+    <div class="wrapper">
+        <header class="header">
+            <div class="header__container _container ">
+
+                <a href="index.html" class="header__logo">
+                    <img src="img/logo-one.svg" alt="Main-logo">
+                </a>
+
+                <a href="index.html" class="header__logo-text">
+                    <img src="img/logo-text.svg" alt="Text-logo">
+                </a>
+
+                <div class="header__menu menu">
+                    <div class="menu-icon">
+                        <div id="nav-icon4">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+                    </div>
+                    <nav id="menu" class="menu__body">
+                        <ul class="menu__list">
+                            <li class="menu__item">
+                                <a href="index.html#additional-equipment" class="menu__link">Доп. Оборудование</a>
+                            </li>
+                            <li class="menu__item">
+                                <a href="index.html#about" class="menu__link">О компании</a>
+                            </li>
+                            <li class="menu__item">
+                                <a href="index.html#map" class="menu__link">Контакты</a>
+                            </li>
+                            <li class="menu__item">
+                                <a href="tel:89771016953" class="menu__link orenge-link">
+                                    +7 977 101 69 53</a>
+                            </li>
+                            <li class="menu__item">
+                                <a href="#" class="menu__link icon-messegers">
+                                    <img src="./img/tm.svg" alt="telegrem"></a>
+                            </li>
+                            <li class="menu__item">
+                                <a href="tel:89771016953" class="menu__link icon-messegers">
+                                    <img src="./img/phone_icon.svg" alt="phone"></a>
+                            </li>
+                            <li class="menu__item">
+                                <a href="#" class="menu__link icon-messegers">
+                                    <img src="./img/wh.svg" alt="Whatsapp"></a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+
+            </div>
+
+        </header>
+        <main class="main__catalog">
+            <div class="main__container _container">
+                <section>
+                    <div class="main__redirect">
+                        <a href="index.html">Главная</a>
+                        <a class="link-active" href="#">Каталог</a>
+                    </div>
+                    <div class="main__redirect-decore"></div>
+                </section>
+                <section class="main__wrapper">
+                    <div class="main__catalog-block">
+                        <section class="main__catalog-menu catalog-menu">
+                            <div class="catalog-menu__link">
+                                <h5 class="catalog-menu-title">Каталог</h5>
+                                <div class="catalog-menu__items">
+                                    <div class="catalog-menu__item"><button onclick="products.myClickFactory()"
+                                            class="parameters parameters-active" href="#">Все прицепы</button>
+                                    </div>
+                                    <div class="catalog-menu__item"><button onclick="products.myClickFactory('Бокс')"
+                                            class="parameters" href="#">Автобокс</button></div>
+                                    <div class="catalog-menu__item"><button onclick="products.myClickFactory('лодок')"
+                                            class="parameters" href="#">Для водной техники</button></div>
+                                    <div class="catalog-menu__item"><button onclick="products.myClickFactory('фургон')"
+                                            class="parameters" href="#">Прицепы-фургоны</button>
+                                    </div>
+                                    <div class="catalog-menu__item"><button
+                                            onclick="products.myClickFactory('коммерческих')" class="parameters"
+                                            href="#">Коммерческие прицепы</button></div>
+                                    <div class="catalog-menu__item"><button
+                                            onclick="products.myClickFactory('Дополнительное оборудование')"
+                                            class="parameters">Дополнительное
+                                            оборудование</button>
+                                    </div>
+                                </div>
+                                <h5 class="catalog-menu-title-checkbox">Производитель:</h5>
+                                <div class="catalog-menu-checkbox">
+                                    <div class="catalog-menu-checkbo__items">
+                                        <input onclick="products.myClickCheckbox()" class="factory-mzsa" type="checkbox"
+                                            id="factoryMz" name="factory" value="МЗСА">
+                                        <label for="factoryMz"><span></span>МЗСА</label>
+                                    </div>
+                                    <div>
+                                        <input onclick="products.myClickCheckbox()" class="factory-rus" type="checkbox"
+                                            id="factoryRus" name="factory" value="Русич">
+                                        <label for="factoryRus"><span></span>Русич</label>
+                                    </div>
+                                    <div>
+                                        <input onclick="products.myClickCheckbox()" class="factory-avtos"
+                                            type="checkbox" id="factoryAv" name="factory" value="AVTOS">
+                                        <label for="factoryAv"><span></span>AvtoS</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                    <div class="main__producrs-block">
+                        <section>
+                            <div class="products">
+
+                            </div>
+                            <a href="#popup" class="header__phone popup-link">Popup</a>
+                        </section>
+                    </div>
+                </section>
+                <div class="pagination"></div>
+
+
+                <!-- menu-burger -->
+
+
+                <div class="header-menu__burg">
+                    <div class="menu-burg invisible">
+                        <ul class="menu__list">
+                            <li class="menu__item">
+                                <a href="#additional-equipment" class="menu__link orenge-link">Доп. Оборудование</a>
+                            </li>
+                            <li class="menu__item">
+                                <a href="#about" class="menu__link">О компании</a>
+                            </li>
+                            <li class="menu__item">
+                                <a href="#" class="menu__link">Каталог</a>
+                            </li>
+                            <li class="menu__item">
+                                <a href="#map" class="menu__link">Контакты</a>
+                            </li>
+                            <li class="menu__item">
+                                <a href="tel:89771016953" class="menu__link orenge-link">
+                                    +7 977 101 69 53</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Кнопка наверх -->
+
+                <div class="to-up">Наверх</div>
+            </div>
+        </main>
+        <footer class="footer">
+            <div class="footer__container _container">
+                <div class="footer__body body-footer">
+                    <div class="body-footer__column">
+
+                        <a href="#app" class="body-footer__logo">
+                            <img src="img/logo-one.svg" alt="main-logo">
+                        </a>
+
+                        <ul class="body-footer__contacts contacts-footer">
+                            <li class="contacts-footer__item">
+                                <a href="mailto:AutoTrailer_kolomna@gmail.com"
+                                    class="contacts-footer__link contacts-footer__link_main">
+                                    AutoTrailer_kolomna@gmail.com
+                                </a>
+                            </li>
+                            <li class="contacts-footer__item">
+                                <a href="#map" class="contacts-footer__link contacts-footer__link_location">
+                                    г. Коломна проезд Станкостроителей, 5а
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="body-footer__column">
+                        <div class="body-footer__social">
+                            <h4 class="body-footer__title">Присоединяйтесь к нам в социальных сетях:</h4>
+                            <div class="body-footer__items">
+                                <a href="https://vk.com/avtotrailers" target="_blank" class="body-footer__item">
+                                    <img src="./img/footer/social/VK.svg" alt="VK">
+                                </a>
+                                <a href="https://t.me/avtotreilers" class="body-footer__item">
+                                    <img src="img/footer/social/telegram.svg" alt="TM">
+                                </a>
+                                <a href="https://t.me/avtotreilers" class="body-footer__item">
+                                    <img src="img/footer/social/whatsapp.svg" alt="WhatApp">
+                                </a>
+                            </div>
+                        </div>
+                        <div class="footer-billboard">
+                            <h4 class="footer-billboard__title"> доски объявлений: </h4>
+                            <div class="footer-billboard__items">
+                                <a href="#" class="footer-billboard__item">
+                                    <img src="img/avito.svg" alt="Avito">
+                                </a>
+                                <a href="https://youla.ru/store/6394094e6cea4101c810efdf"
+                                    class="footer-billboard__item">
+                                    <img src="img/yla.svg" alt="Yla">
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="footer__copy">
+                    <!-- © 2016 - 2022 АвтоТрейлер -->
+                </div>
+            </div>
+        </footer>
+
+        <!-- Popup -->
+
+        <!-- <div id='popup' class='popup'>
+            <div class="popup__body">
+                <div class='popup__content'>
+                    <a href='#popup' class='popup__close close-popup'>X</a>
+                    <div class='popup__title'>Это модель окна 1</div>
+                    <div class='popup__text'>тут должен быть текст</div>
+                </div>
+            </div>
+        </div> -->
+    </div>
+    <script defer src="https://use.fontawesome.com/releases/v5.7.2/js/all.js"
+        integrity="sha384-0pzryjIRos8mFBWMzSSZApWtPl/5++eIfzYmTgBBmXYdhvxPc+XcFEk+zJwDgWbP"
+        crossorigin="anonymous"></script>
+    <script src="./js/main.js"></script>
+    <script src="./js/animation.js"></script>
+    <script src="./js/data.js"></script>
+    <script src="./js/menu-burg.js"></script>
+    <script src="./js/popup.js"></script>
+</body>
+
+</html>

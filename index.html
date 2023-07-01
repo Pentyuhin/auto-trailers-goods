@@ -22,8 +22,12 @@
     <!-- Кодировка страницы -->
     <meta charset="UTF-8">
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.1/gsap.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.1/ScrollTrigger.min.js" defer></script>
 
-    <script src="./js/url.js" defer></script>
+    <script src="./js/animation-scroll.js" defer></script>
+    <script src="./js/animation-scroll-text.js" defer></script>
+
 </head>
 <!-- Отображаемое тело страницы -->
 
@@ -51,10 +55,11 @@
                     <nav id="menu" class="menu__body">
                         <ul class="menu__list">
                             <li class="menu__item">
-                                <a href="#additional-equipment" class="menu__link">Доп. Оборудование</a>
+                                <a href="#" class="menu__link"
+                                    onclick="smoothScrollToElement('additional-equipment')">Доп. Оборудование</a>
                             </li>
                             <li class="menu__item">
-                                <a href="#about" class="menu__link">О компании</a>
+                                <a class="menu__link" onclick="smoothScrollToElement('about')">О компании</a>
                             </li>
                             <li class="menu__item">
                                 <a href="./catalog.html" class="menu__link">Каталог</a>
@@ -113,16 +118,17 @@
                     <div class="menu-burg invisible">
                         <ul class="menu__list">
                             <li class="menu__item">
-                                <a href="#additional-equipment" class="menu__link orenge-link">Доп. Оборудование</a>
+                                <a href="#" class="menu__link orenge-link"
+                                    onclick="smoothScrollToElement('additional-equipment')">Доп. Оборудование</a>
                             </li>
                             <li class="menu__item">
-                                <a href="#about" class="menu__link">О компании</a>
+                                <a href="#" class="menu__link" onclick="smoothScrollToElement('about')">О компании</a>
                             </li>
                             <li class="menu__item">
                                 <a href="catalog.html" class="menu__link">Каталог</a>
                             </li>
                             <li class="menu__item">
-                                <a href="#map" class="menu__link">Контакты</a>
+                                <a href="#" class="menu__link" onclick="smoothScrollToElement('map')">Контакты</a>
                             </li>
                             <li class="menu__item">
                                 <a href="tel:89771016953" class="menu__link orenge-link">

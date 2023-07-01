@@ -20,20 +20,21 @@ class List {
                 console.log(error);
             })
     }
-    handleData(data) {
-        this.goods = [...data];
-        this.render();
-    }
 
-    render() {
-        const block = document.querySelector(this.container);
-        for (let product of this.goods) {
-            const productObj = new this.list[this.constructor.name](product);
-            // console.log(productObj);
-            this.allProducts.push(productObj);
-            block.insertAdjacentHTML('beforeend', productObj.render());
-        }
-    }
+    // handleData(data) {
+    //     this.goods = [...data];
+    //     this.render();
+    // }
+
+    // render() {
+    //     const block = document.querySelector(this.container);
+    //     for (let product of this.goods) {
+    //         const productObj = new this.list[this.constructor.name](product);
+    //         // console.log(productObj);
+    //         this.allProducts.push(productObj);
+    //         block.insertAdjacentHTML('beforeend', productObj.render());
+    //     }
+    // }
 
     filter(value) {
         const regexp = new RegExp(value, 'i');
@@ -53,6 +54,7 @@ class List {
     }
 }
 
+
 class Item {
     constructor(el) {
         this.product_name = el.product_name;
@@ -63,26 +65,29 @@ class Item {
         this.factory = el.factory;
         this.imgFactory = el.imgFactory;
     }
-    render() { //генерация товара для каталога товаров
+    render() {
+        //генерация товара для каталога товаров
         return `<div class="product-item" data-id="${this.id_product}">
-        <img class="product-img popup-link" src="${this.img}" alt="Some img">
-        <img class="product-img-factory" src="${this.imgFactory}" alt="Factory">
+        <img class="product-img popup-link" loading="lazy" src="${this.img}" alt="Some img">
+        <img class="product-img-factory" loading="lazy" width="85px" height="12px" src="${this.imgFactory}" alt="Factory">
         <div class="desc">
+        <div>
             <h3 class="product-title">${this.product_name}</h3>
-            <p data-factory="${this.factory}"></p>
+        </div>
             <div class="product-info">
                 <p>${this.price} &#8381</p>
                 <button class="buy-btn" data-id="${this.id_product}"
                     data-name="${this.product_name}"
                     data-price="${this.price}">Заказать</button>
             </div>
-            <div><p class="product-description">${this.description}</p></div>
+            <div><p class="product-description">${String(this.description)}</p></div>
             <div class="product-discount">   
                 <p><span><img src="./img/sb-logo.svg"></span>Рассрочка от Сбербанка</p>
             </div>
         </div>
     </div>`
     }
+
 }
 
 
@@ -97,30 +102,38 @@ class ProductsList extends List {
         this.getJson()
             .then(data => {
                 for (let item of data) {
-                    item.imgPath = `img/trailers/${item.id_product}.jpg`;
+                    // item.imgPath = `img/trailers/${item.id_product}.jpg`;
                     this.goods.push(item);
                     if (item.factory === "МЗСА") {
                         item.imgFactory = `img/logo/logoMzsa.svg`;
+                        item.imgPath = `img/trailers/${item.id_product}.jpg`;
                         this.goods.push(item);
                     }
                     if (item.factory === "AVTOS") {
                         item.imgFactory = `img/logo/logoAvtos.svg`;
+                        item.imgPath = `img/trailers/no-foto.jpg`;
                         this.goods.push(item);
                     }
                     if (item.factory === "Русич") {
                         item.imgFactory = `img/logo/logoRus.svg`;
+                        item.imgPath = `img/trailers/no-foto.jpg`;
                         this.goods.push(item);
                     }
                     if (item.factory === "ATLANT") {
-                        item.imgFactory = `img/logo/logoMzsa.svg`;
+                        item.imgFactory = `img/logo/Atlant.svg`;
+                        item.imgPath = `img/trailers/${item.id_product}.jpg`;
                         this.goods.push(item);
                     }
+
                 }
                 this.handleData(data);
                 this.totalPages = Math.ceil(this.allProducts.length / this.perPage);
                 this.renderPagination();
             });
     }
+
+
+    // --- Pagination with number ---
 
     handleData(data) {
         this.allProducts = [...data].map(product => new this.list[this.constructor.name](product));
@@ -138,6 +151,23 @@ class ProductsList extends List {
             block.insertAdjacentHTML('beforeend', product.render());
         }
     }
+
+    // -------------------------
+
+    // render() {
+    //     const block = document.querySelector(this.container);
+    //     const start = (this.currentPage - 1) * this.perPage;
+    //     const end = start + this.perPage;
+    //     const productsToRender = this.goods.slice(start, end);
+    //     for (let product of productsToRender) {
+    //         const productObj = new this.list[this.constructor.name](product);
+    //         this.allProducts.push(productObj);
+    //         block.insertAdjacentHTML('beforeend', productObj.render());
+    //     }
+    // }
+
+
+    // --- Pagination with number ---
 
     renderPagination() {
         const paginationContainer = document.querySelector('.pagination');
@@ -164,6 +194,24 @@ class ProductsList extends List {
             });
         });
     }
+
+    // renderPagination() {
+    //     const paginationContainer = document.querySelector('.pagination');
+    //     paginationContainer.innerHTML = '';
+
+    //     const loadMoreButton = document.createElement('button');
+    //     loadMoreButton.classList.add('load-more-button');
+    //     loadMoreButton.textContent = `Load More`;
+
+
+    //     loadMoreButton.addEventListener('click', () => {
+    //         this.currentPage++;
+    //         this.render();
+    //     });
+
+    //     paginationContainer.appendChild(loadMoreButton);
+    // }
+
 
     filterProducts(value, factoryChecked) {
         const regexp = new RegExp(value, 'i');
@@ -218,7 +266,6 @@ class ProductsList extends List {
         //         this.cart.addProduct(e.target);
         //     }
         // });
-
 
         const links = document.querySelectorAll('.parameters');
         links.forEach(link => {

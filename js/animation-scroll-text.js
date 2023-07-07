@@ -4,7 +4,7 @@
 let tl = gsap.timeline();
 gsap.registerPlugin(ScrollTrigger)
 
-tl.fromTo('.header__logo', { buration: 2, x: 700, ease: 'slow (0.7, 0.7, false)' }, { x: 0 })
+tl.from('.header__logo', { buration: 2, x: 700, ease: 'slow (0.7, 0.7, false)' })
 tl.fromTo(['.menu__body', '.header__logo-text'], { buration: 3, opacity: 0, ease: 'power.out' }, { opacity: 1 }, '-=0.3')
 
 

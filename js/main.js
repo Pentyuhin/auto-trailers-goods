@@ -64,21 +64,26 @@ class Item {
         this.img = el.imgPath;
         this.factory = el.factory;
         this.imgFactory = el.imgFactory;
+        this.appellation = el.appellation;
+        this.execution = el.execution;
+
     }
     render() {
         //генерация товара для каталога товаров
         return `<div class="product-item" data-id="${this.id_product}">
         <img class="product-img popup-link" loading="lazy" src="${this.img}" alt="Some img">
-        <img class="product-img-factory" loading="lazy" width="85px" height="12px" src="${this.imgFactory}" alt="Factory">
+        <img class="product-img-factory" loading="lazy" ${this.factory === "AVTOS" ? `width="40px"` : `width="85px"`} src="${this.imgFactory}" alt="Factory">
         <div class="desc">
-        <div>
+        <div class="product-block-title">
             <h3 class="product-title">${this.product_name}</h3>
+            ${this.factory === "МЗСА" ? `<p class="product-title-option">Наименование: ${this.appellation}</p>` : ""}
+            ${this.factory === "МЗСА" ? `<p class="product-title-option">Исполнение: ${this.execution}</p>` : ""}
         </div>
             <div class="product-info">
                 <p>${this.price} &#8381</p>
-                <button class="buy-btn" data-id="${this.id_product}"
+                <a href="tel:89771016953" class="buy-btn" data-id="${this.id_product}"
                     data-name="${this.product_name}"
-                    data-price="${this.price}">Заказать</button>
+                    data-price="${this.price}">Заказать</a>
             </div>
             <div><p class="product-description">${String(this.description)}</p></div>
             <div class="product-discount">   
@@ -87,7 +92,6 @@ class Item {
         </div>
     </div>`
     }
-
 }
 
 
@@ -102,7 +106,7 @@ class ProductsList extends List {
         this.getJson()
             .then(data => {
                 for (let item of data) {
-                    // item.imgPath = `img/trailers/${item.id_product}.jpg`;
+                    // item.imgPath = `img / trailers / ${ item.id_product }.jpg`;
                     this.goods.push(item);
                     if (item.factory === "МЗСА") {
                         item.imgFactory = `img/logo/logoMzsa.svg`;
@@ -173,7 +177,7 @@ class ProductsList extends List {
         const paginationContainer = document.querySelector('.pagination');
         paginationContainer.innerHTML = '';
         for (let i = 1; i <= this.totalPages; i++) {
-            const pageLinks = `<a href="#" data-page="${i}" ${i === this.currentPage ? 'class="pagination-active"' : 'class=""'}>${i}</a>`;
+            const pageLinks = `<a href="#" data-page="${i}" ${i === this.currentPage ? 'class="pagination-active"' : 'class=""'}> ${i}</a> `;
             paginationContainer.insertAdjacentHTML('beforeend', pageLinks);
         }
         const pageLinks = document.querySelectorAll('.pagination a');

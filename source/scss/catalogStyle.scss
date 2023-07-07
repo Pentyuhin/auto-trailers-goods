@@ -237,7 +237,7 @@ body.lock {
                         display: block;
                         //width: calc(var(--index) * 12);
                         max-width: 100%;
-                        height: 39%;
+                        height: 50%;
                         object-fit: cover;
                         flex: 1;
                     }
@@ -255,19 +255,31 @@ body.lock {
                     display: flex;
                     flex-direction: column;
                     height: 100%;
+                    .product-block-title {
+                        display: flex;
+                        flex-direction: column;
+                        flex: 1 1 auto;
+                    }
                     .product-title {
                         padding-left: 10px;
                         font-family: $main-font;
                         font-weight: 600;
-                        font-size: 20px;
-                        line-height: 24px;
+                        font-size: 1.2rem;
+                        line-height: 1.5rem;
                         padding-top: 15px;
+                        color: #212121;
+                    }
 
+                    .product-title-option {
+                        padding-left: 10px;
+                        font-family: $main-font;
+                        font-size: 0.9rem;
+                        line-height: 1.5rem;
                         color: #212121;
                     }
                     .product-info {
-                        flex: 1 1 auto;
-                        padding: 9px 10px 12px;
+                        margin-top: 10px;
+                        padding-left: 10px;
                         display: flex;
                         justify-content: space-between;
                         align-items: center;
@@ -276,7 +288,6 @@ body.lock {
                             font-weight: 700;
                             font-size: 20px;
                             line-height: 24px;
-
                             color: #f4a040;
                         }
                         .buy-btn {
@@ -300,7 +311,8 @@ body.lock {
                     }
                     .product-description {
                         // width: 252px;
-                        padding: 11px 10px;
+                        padding-left: 10px;
+                        padding-top: 10px;
                         font-family: $main-font;
                         font-weight: 300;
                         font-size: 12px;
@@ -314,9 +326,7 @@ body.lock {
                         font-weight: 600;
                         font-size: 12px;
                         line-height: 15px;
-
                         color: #21a038;
-
                         & p span {
                             padding-right: 6px;
                         }
